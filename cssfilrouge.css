@@ -111,7 +111,17 @@ body {
     font-size: 1rem;
 }
 
-
+span{
+    opacity: 0;
+    transition: all 0.5s ease;
+    transform: translateY(50px);
+    display: inline-block;
+  }
+  
+  span.fade{
+    opacity: 1;
+    transform: translateY(0px);
+  }
 
 /* nav barre */
 
@@ -544,3 +554,27 @@ body {
 
 
 
+#principal {
+	position: relative;
+}
+.menu {
+	position: absolute;
+	background-color: var(--white);
+	transition: all 3s ease;
+    top: -120px;
+}
+.navinnav{
+    position: relative;
+   
+}
+.display{
+    display : none;
+    top: -120px;
+    transition: all 3s ease;
+}
+.menulnk{
+    border: none;
+}
+.menulist{
+    list-style: none;
+}
