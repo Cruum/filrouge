@@ -124,7 +124,7 @@ let timer = setInterval(onTick, 50);
 
 
 function onTick() {
-  const spans = secondTittle.querySelectorAll('span');
+  const spans = text.querySelectorAll('span');
   spans[charIndex].classList.add('fade');
   charIndex++;
   
@@ -139,13 +139,28 @@ function complete() {
   timer = null;
 }
 
-
+// on click in the "histoires" on menu: show new selection
 const buttonNav = document.getElementById("principal")
+const menunv = document.getElementById("menu")
 buttonNav.addEventListener('click', function(){
     const displayNone = document.querySelector(".navinnav");
-    displayNone.classList.toggle("display")
-}
-)
+    menunv.classList.toggle("transition")
+    if(!displayNone.classList.contains("display")){ 
+        setTimeout(function() {
+            displayNone.style.opacity = "0"; // Appliquer l'opacité 0
+            setTimeout(function() {
+              displayNone.classList.toggle("display");
+              displayNone.style.opacity = "1"; // Rétablir l'opacité 1
+            }, 500); // Temps de transition
+          }, 500);
+        } else {
+          displayNone.style.opacity = "0"; // Appliquer l'opacité 0
+          setTimeout(function() {
+            displayNone.classList.toggle("display");
+            displayNone.style.opacity = "1"; // Rétablir l'opacité 1
+          }, 100); // Temps de transition
+        }
+    })
 
 let menuAberto = false;
 function abrirMenu(ev) {
