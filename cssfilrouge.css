@@ -111,17 +111,17 @@ body {
     font-size: 1rem;
 }
 
-span{
+span {
     opacity: 0;
     transition: all 0.5s ease;
     transform: translateY(50px);
     display: inline-block;
-  }
-  
-  span.fade{
+}
+
+span.fade {
     opacity: 1;
     transform: translateY(0px);
-  }
+}
 
 /* nav barre */
 
@@ -186,8 +186,9 @@ span{
         top: 0.5rem;
 
     }
+
     /* pb avec en bootstrap .header-logo, .header-tlt  */
-    .nav-logo{
+    .nav-logo {
         display: none;
     }
 
@@ -208,56 +209,64 @@ span{
 
 
 #principal {
-	position: relative;
+    position: relative;
     border: none;
 }
+
 .menu {
-	position: absolute;
-	background-color: var(--white);
+    position: absolute;
+    background-color: var(--white);
     opacity: 1;
     transition: opacity 2s ease;
-	/* transition: all 3s ease; */
+    /* transition: all 3s ease; */
     top: -190px;
 }
-.navinnav{
+
+.navinnav {
     position: relative;
-    opacity: 1;
-    transition: opacity 0.5s ease;    
-}
-.transition{
     opacity: 1;
     transition: opacity 0.5s ease;
 }
-.display{
-    display : none;
+
+.transition {
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
-.menulnk{
+
+.display {
+    display: none;
+}
+
+.menulnk {
     /* border: 1px black solid; */
 }
-.menulist{
+
+.menulist {
     list-style: none;
 }
 
-.menu-itm{
+.menu-itm {
     height: 50px;
     border-bottom: 1px black solid;
 }
 
 
-  #menuHistoire > li{
-border-right: none;
-  }
-  @media screen and (min-width:1270px){
+#menuHistoire>li {
+    border-right: none;
+}
+
+@media screen and (min-width:1270px) {
     .menu {
 
         /* transition: all 3s ease; */
         top: 20px;
     }
-    .menu-itm{
+
+    .menu-itm {
         border-top: 1px black solid;
         border-bottom: none;
     }
-  }
+}
 
 /* MAIN HISTOIRE */
 .title_main {
@@ -313,7 +322,7 @@ border-right: none;
 
 
 @media screen and (min-width:1270px) {
-    .histories{
+    .histories {
         display: flex;
     }
 
@@ -390,13 +399,15 @@ border-right: none;
     width: 100%;
     border-radius: 6%
 }
-.contenaireimg{
+
+.contenaireimg {
     display: flex;
     flex-direction: row-reverse;
     max-width: 800px;
     margin-bottom: 0.5rem;
 }
-.imgretour{
+
+.imgretour {
     width: 12vw;
     max-width: 60px;
 }
@@ -468,7 +479,8 @@ border-right: none;
     height: 5rem;
     color: var(--white);
 }
-.choice-itm{
+
+.choice-itm {
     border-radius: 1rem;
     width: 100%;
     height: 100%;
@@ -476,11 +488,12 @@ border-right: none;
     font-size: 1rem;
 }
 
-.choice-itm:hover{
+.choice-itm:hover {
     box-shadow: var(--white) 1px 1px 50px;
     background-color: #3a3939;
 }
-.choice-itm:disabled{
+
+.choice-itm:disabled {
     background-color: var(--white);
     box-shadow: black 0px 0px 0px;
     color: var(--black);
@@ -628,6 +641,6 @@ border-right: none;
 
 
 
-  .selected{
+.selected {
     text-decoration: underline;
-  }
+}

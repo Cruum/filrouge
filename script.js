@@ -22,9 +22,55 @@ const JSON = [
   }
 ];
 
-console.log(JSON);
 
+// [
+//   {
+//     id: 1,
+//     title: 'titre',
+//     text: "Vous fuyez à son opposé    Un frisson de peur parcourt votre échine, et votre instinct de survie vous pousse à vous éloigner précipitamment de cette créature imposante. Vous vous précipitez dans la direction opposée, espérant échapper à sa vue perçante et à sa force redoutable. Votre cœur bat la chamade tandis que vous vous éloignez de plus en plus, soudain la route se divise en deux.",
+//     choices: [
+//       {
+//         text: "Aller à droite",
+//         id: 2,
+//       }
+//       {
+//         text: "Aller à gauche",
+//         id: 3
+//       }
+//     ]
 
+//   },
+//   {
+//     id: 2,
+//     title: 'titre',
+//     text: 'Lorem ipsum .....',
+//     choices: [
+//       {
+//         text: 'click me',
+//         id: 3
+//       }
+//     ]
+//   },
+
+//   {
+//     id: 3,
+//     title: 'titre',
+//     text: "Vous ",
+//     choices: [
+//       {
+//         text: "Aller à gauche",
+//         id: 3.2
+//       },
+//       {
+//         text: "Aller à gauche",
+//         id: 3.3
+//       }
+//     ]
+//   },
+
+// ];
+
+// console.log(JSON);
 
 
 
@@ -125,9 +171,9 @@ function CreateSection(e, JSONTEXT, JSON1, JSON2, buttonId1, buttonId2) {
     createHistory(sectionContinue)
 
     getP.innerText = JSONTEXT;
-    const textjson = getP.innerText;
-    textjson.innerText = '';
-    letterbyletter(getP, textjson);
+    // const textjson = getP.innerText;
+    // textjson.innerText = '';
+    // letterbyletter(getP, textjson);
 
 
     const button1 = getButton(choiceTwo, getli, buttonId1);
@@ -136,14 +182,12 @@ function CreateSection(e, JSONTEXT, JSON1, JSON2, buttonId1, buttonId2) {
     const button2 = getButton(choiceTwo, getli2, buttonId2);
     addButton(button2, JSON2, getli2);
 
-    
-    console.log(buttonID1);
-    CreateSection(buttonID1, JSON[0].text);
+
   })
 }
 
 CreateSection(buttonOne, JSON[0].text, JSON[0].choix1, JSON[0].choix2, 'buttonID1', 'buttonID2');
-CreateSection(buttonTwo,JSON[1].text, JSON[1].choix1, JSON[1].choix2, 'buttonID3', 'buttonID4');
+CreateSection(buttonTwo, JSON[1].text, JSON[1].choix1, JSON[1].choix2, 'buttonID3', 'buttonID4');
 CreateSection(buttonthree, JSON[2].text, JSON[2].choix1, JSON[2].choix2, 'buttonID5', 'buttonID6');
 CreateSection(buttonfour, JSON[3].text, JSON[3].choix1, JSON[3].choix1, 'buttonID7', 'buttonID8');
 
