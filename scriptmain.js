@@ -119,7 +119,7 @@ regroup(text, splitText);
 regroup(secondTittle, splitsecondTittle);
 
 let charIndex = 0;
-let timer = setInterval(onTick, 50);
+let timer = setInterval(onTick, 100);
 
 
 
@@ -133,6 +133,7 @@ function onTick() {
     return;
   }
 }
+
 
 function complete() {
   clearInterval(timer);

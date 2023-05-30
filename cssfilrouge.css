@@ -131,7 +131,7 @@ span.fade {
     align-items: center;
     /* margin: 1rem 0.5rem; */
     /* gap: 0.5rem; */
-    height: 6vh;
+    /* height: 6vh; */
     list-style: none;
     color: black;
     text-align: center;
@@ -146,6 +146,29 @@ span.fade {
     /* font-weight: bold; */
     text-transform: uppercase;
     text-decoration: none;
+ 
+}
+.nav_lnk:hover{
+    text-decoration: underline;
+}
+
+.li_lnk {
+    text-align: center;
+    font-size: 0.7rem;
+    padding: 0.5rem;
+    /* padding: 0.5rem 1rem; */
+    /* font-weight: bold; */
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  
+}
+.li_lnk:hover{
+    text-decoration: underline;
 }
 
 .nav-ul :not(:last-child) {
@@ -165,6 +188,10 @@ span.fade {
 
 .nav-contenaire-name {
     display: none;
+}
+.svg{
+    width: 50%;
+    aspect-ratio: 1/1;
 }
 
 @media screen and (min-width:1270px) {
@@ -194,13 +221,19 @@ span.fade {
 
     .nav-ul {
         height: 10vh;
-        gap: 0.5rem;
+        /* gap: 1rem; */
+        
     }
 
     .nav_lnk {
         font-size: 0.6rem;
+        padding: 1rem;
+        display: block;
     }
-
+    .li_lnk {
+        font-size: 0.6rem;
+        /* padding: 1.2rem; */
+    }
     .header-first {
         height: 100vh;
         font-size: 2rem;
@@ -214,12 +247,13 @@ span.fade {
 }
 
 .menu {
+    width: 100%;
     position: absolute;
     background-color: var(--white);
     opacity: 1;
     transition: opacity 2s ease;
     /* transition: all 3s ease; */
-    top: -190px;
+    top: -191px;
 }
 
 .navinnav {
@@ -259,12 +293,15 @@ span.fade {
     .menu {
 
         /* transition: all 3s ease; */
-        top: 20px;
+        top: 0;
     }
 
     .menu-itm {
         border-top: 1px black solid;
         border-bottom: none;
+    }
+    .test{
+        /* height: 10vh; */
     }
 }
 
@@ -272,8 +309,8 @@ span.fade {
 .title_main {
     text-align: center;
     text-transform: uppercase;
-    font-size: 1rem;
-    margin: 0.5rem;
+    font-size: 1.2rem;
+    margin: 1rem 0.5rem 0.5rem 0.5rem;
 }
 
 /* histoire */
@@ -494,8 +531,9 @@ span.fade {
 }
 
 .choice-itm:disabled {
-    background-color: var(--white);
-    box-shadow: black 0px 0px 0px;
+    /* visibility: hidden; */
+    /* background-color: var(--white); */
+    box-shadow: none;
     color: var(--black);
 }
 
@@ -642,5 +680,5 @@ span.fade {
 
 
 .selected {
-    text-decoration: underline;
+        background-color: var(--white);
 }
