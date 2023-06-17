@@ -171,7 +171,7 @@ span.fade {
     text-decoration: underline;
 }
 
-.nav-ul :not(:last-child) {
+.nav-ul :not(:last-child, .svg) {
     border-right: 1px black solid;
 }
 
@@ -190,8 +190,23 @@ span.fade {
     display: none;
 }
 .svg{
-    width: 50%;
+    max-width: 50%;
+    min-width: 48px;
     aspect-ratio: 1/1;
+    border: none;
+    margin-top: 0.5rem;
+}
+
+.test{
+    padding: 0 3vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav_link_destok{
+    display: none;
 }
 
 @media screen and (min-width:1270px) {
@@ -238,6 +253,12 @@ span.fade {
         height: 100vh;
         font-size: 2rem;
     }
+    .nav_link_destok{
+        display: block;
+    }
+    .svg{
+        display: none;
+    }
 }
 
 
@@ -253,11 +274,12 @@ span.fade {
     opacity: 1;
     transition: opacity 2s ease;
     /* transition: all 3s ease; */
-    top: -191px;
+    top: -20.5vh;
+    left: 0;
 }
 
 .navinnav {
-    position: relative;
+    /* position: relative; */
     opacity: 1;
     transition: opacity 0.5s ease;
 }
@@ -293,7 +315,8 @@ span.fade {
     .menu {
 
         /* transition: all 3s ease; */
-        top: 0;
+        top: 10vh;;
+        
     }
 
     .menu-itm {
@@ -491,6 +514,15 @@ span.fade {
 
 }
 
+
+.section_choice{
+    display: flex;
+align-items: center;
+align-content: center;
+text-align: center;
+justify-content: center;
+flex-wrap: wrap;
+}
 
 .title-button {
     margin: 0 auto;

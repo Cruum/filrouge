@@ -33,23 +33,24 @@
                 <li><a class="nav_lnk" href="connexion.html">Compte</a> </li>
             </ul>
         </nav>
+
         <section class="header">
             <div class="header-div">
                 <h1 class="title_main"><em> Réincartaysie</em></h1>
             </div>
         </section>
-
-    </header>
-    <div>
+        <div>
         <div class="contenaireimg contenaire histories">
             <a type="button" value = "Rafraîchir" onclick="history.go(0)"><img class="imgretour choice-itm" src="img/annuler (1).png" alt=""> </a>
         </div>
     </div>
+    </header>
+  
     <main class=" main-histoire">
 
         <section class="contenaire contenaire-history">
             <div class="contenaire-history-wrap">
-                <img class="contenaire-history_img" src="img/actu-guides-prairies.jpg" alt="image d'une vallée">
+                <img class="contenaire-history_img" src="img/actu-guides-prairies.jpg" alt="image d'une vallée" id="img">
                 <p class="history-txt" id="histoire">Vos paupières sont lourdes, vous fermez les yeux et au moment où
                     vous les ouvrez, vous n’êtes plus sur votre chaise mais vous vous trouvez à la frontière entre une
                     vaste clairière verdoyante et l’oré d’une forêt.
@@ -61,18 +62,20 @@
             </div>
 
  </section>
-            <div class="Choix contenaire">
-                <ul class="button-lst history-txt">
-                    <li class="button-item"><button class="choice-itm" id="choice1" href="#"> Vous fuyez à son opposé</button>
-                    </li>
-                    <li class="button-item"><button class="choice-itm" id="choice2" href="#">Vous ne bougez pas d’un cil</button>
-                    </li>
-                    <li class="button-item"><button class="choice-itm" id="choice3" href="#">La meilleur défense c’est
-                            l’attaque, vous lui foncer dessus</button></li>
-                    <li class="button-item"><button class="choice-itm" id="choice4" href="#">Vous criez pour essayer de
-                            l’effrayer</button></li>
-                </ul>
-            </div>
+
+ <section class="section_choice " id="zone_choice">
+
+ <div class="button-item display" id="div_button">
+    <button class="choice-itm" id="choice1" href="#">Option 1</button> 
+    <button class="choice-itm" id="choice1" href="#">Option 2</button> 
+    <button class="choice-itm" id="choice1" href="#">Option 3</button> 
+    <button class="choice-itm" id="choice1" href="#">Option 4</button> 
+
+
+</div>
+
+</section>
+
        
         <section id="nextHistorie" class="contenaire contenaire-history display">
 
