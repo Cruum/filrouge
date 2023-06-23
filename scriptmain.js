@@ -99,41 +99,48 @@ const strText = text.textContent;
 const splitText = strText.split("");
 
 const secondTittle = document.getElementById('secondTittle');
-const strsecondTittle = secondTittle.textContent;
-const splitsecondTittle = strsecondTittle.split("");
+const strSecondTittle = secondTittle.textContent;
+const splitSecondTittle = strSecondTittle.split("");
 
 text.textContent = '';
-secondTittle.textContent = ''; 
+secondTittle.textContent = '';
 
 function regroup(element, elementText) {
-    elementText.forEach((char) => {
-      if (char === " ") {
-        element.innerHTML += "<span>&nbsp;</span>"; // Ajoute un espace non rompu
-      } else {
-        element.innerHTML += "<span>"+ char + "</span>";
-      }
-    });
-  }
+  elementText.forEach((char) => {
+    if (char === " ") {
+      element.innerHTML += "<span>&nbsp;</span>"; // Ajoute un espace non rompu
+    } else {
+      element.innerHTML += "<span>" + char + "</span>";
+    }
+  });
+}
 
-regroup(text, splitText);
-regroup(secondTittle, splitsecondTittle);
+regroup(text, splitText); // Divise le texte du premier titre
+regroup(secondTittle, splitSecondTittle); // Divise le texte du deuxième titre
 
-let charIndex = 0;
+let charIndexText = 0;
+let charIndexSecondTittle = 0;
 let timer = setInterval(onTick, 100);
 
-
-
 function onTick() {
-  const spans = text.querySelectorAll('span');
-  spans[charIndex].classList.add('fade');
-  charIndex++;
-  
-  if (charIndex === spans.length) {
+  const spansText = text.querySelectorAll('span');
+  const spansSecondTittle = secondTittle.querySelectorAll('span');
+
+  if (charIndexText < spansText.length) {
+    spansText[charIndexText].classList.add('fade');
+    charIndexText++;
+  }
+
+  if (charIndexSecondTittle < spansSecondTittle.length) {
+    spansSecondTittle[charIndexSecondTittle].classList.add('fade');
+    charIndexSecondTittle++;
+  }
+
+  if (charIndexText === spansText.length && charIndexSecondTittle === spansSecondTittle.length) {
     complete();
     return;
   }
 }
-
 
 function complete() {
   clearInterval(timer);
@@ -175,3 +182,23 @@ function abrirMenu(ev) {
 	}
 	
 }
+
+
+
+
+
+//   document.querySelectorAll('.nav_link_destok').addEventListener('click', function(){
+  
+  //   this.classList.toggle("display")
+  //  })
+  
+
+//  let elements = document.querySelectorAll('.button');
+
+//  let clickEvent = () => {
+//      console.log('some event content here...')
+//  }
+
+
+ 
+

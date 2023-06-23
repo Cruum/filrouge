@@ -41,7 +41,7 @@
         </section>
         <div>
         <div class="contenaireimg contenaire histories">
-            <a type="button" value = "Rafraîchir" onclick="history.go(0)"><img class="imgretour choice-itm" src="img/annuler (1).png" alt=""> </a>
+            <a type="button" value = "Rafraîchir" onclick="history.go(0)"><img class="imgretour reroll" src="img/annuler (1).png" alt=""> </a>
         </div>
     </div>
     </header>
@@ -51,7 +51,7 @@
         <section class="contenaire contenaire-history">
             <div class="contenaire-history-wrap">
                 <img class="contenaire-history_img" src="img/actu-guides-prairies.jpg" alt="image d'une vallée" id="img">
-                <p class="history-txt" id="histoire">Vos paupières sont lourdes, vous fermez les yeux et au moment où
+                <p class="history-txt" id="histoire" data-id-node="0">Vos paupières sont lourdes, vous fermez les yeux et au moment où
                     vous les ouvrez, vous n’êtes plus sur votre chaise mais vous vous trouvez à la frontière entre une
                     vaste clairière verdoyante et l’oré d’une forêt.
                     <br> Vous entendez un bruit, vous retournez et vous voyez un homme-lézard qui siffle, il est vert,
@@ -63,9 +63,9 @@
 
  </section>
 
- <section class="section_choice " id="zone_choice">
+ <section class="section_choice display" id="zone_choice">
 
- <div class="button-item display" id="div_button">
+ <div class="button-item " id="div_button">
     <button class="choice-itm" id="choice1" href="#">Option 1</button> 
     <button class="choice-itm" id="choice1" href="#">Option 2</button> 
     <button class="choice-itm" id="choice1" href="#">Option 3</button> 
@@ -77,10 +77,6 @@
 </section>
 
        
-        <section id="nextHistorie" class="contenaire contenaire-history display">
-
-        </section>
-        <div id="choiceTwo" class="Choix contenaire">    </div>
     </main>
 
 </body>
