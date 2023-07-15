@@ -1,11 +1,8 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": "../../../Users/boism/OneDrive/Escritorio/fil rouge"
 		}
 	],
-	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "connexion",
-		"liveServer.settings.port": 5501
-	}
+	"settings": {}
 }

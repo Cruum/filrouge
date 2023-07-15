@@ -1,37 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php
+require 'includes/header.php';
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Almendra:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="cssfilrouge.css">
-    <title>Fil Rouge</title>
-</head>
+?>
 
-<body class="PlayCreateJDR">
-    
-
-<header>
-    <img class="header-logo" src="graphique-vectoriel-de-l-élément-silhouette-hydra-monstre-illustration-d-un-design-la-isolée-sur-le-fond-blanc-204621519 1.png" alt="">
-<section class="header">
-<div class="header-div" >
-<h1 class="header-tlt"> Play&CreateJDR</h1>
-</div>
-</section>
-
-<nav class="nav" >
-    <ul class="nav-ul"> 
-        <a class="nav-logo" href="#">  <img class="header-logo" src="graphique-vectoriel-de-l-élément-silhouette-hydra-monstre-illustration-d-un-design-la-isolée-sur-le-fond-blanc-204621519 1.png" alt=""> </a>
-    <li><a class="nav_lnk" href="Filrouge.html">Accueil</a> </li>
-    <li><a class="nav_lnk" href="filrougeannuaire.html"> Histoires </a></li>
-    <li><a class="nav_lnk" href="dashboard.html">Dashboard</a></li>
-    <li><a class="nav_lnk" href="connexion.html">Compte</a> </li>
-</ul>
-    </nav>
 </header>
 <h1 class="title_main">Dashboard</h1>
 
@@ -89,4 +60,5 @@
 </main>
 
 </body>
+<script src="menuscript.js"></script>
 </html>

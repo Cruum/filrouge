@@ -171,11 +171,11 @@ span.fade {
     text-decoration: underline;
 }
 
-.nav-ul :not(:last-child) {
+.nav-ul :not(:last-child, .svg) {
     border-right: 1px black solid;
 }
 
-.nav {
+.nav-barre{
     position: fixed;
     bottom: 0;
     background-color: var(--white);
@@ -190,12 +190,27 @@ span.fade {
     display: none;
 }
 .svg{
-    width: 50%;
+    max-width: 50%;
+    min-width: 48px;
     aspect-ratio: 1/1;
+    border: none;
+    margin-top: 0.5rem;
+}
+
+.test{
+    padding: 0 3vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav_link_destok{
+    display: none;
 }
 
 @media screen and (min-width:1270px) {
-    .nav {
+    .nav-barre {
         position: relative;
     }
 
@@ -238,6 +253,12 @@ span.fade {
         height: 100vh;
         font-size: 2rem;
     }
+    .nav_link_destok{
+        display: block;
+    }
+    .svg{
+        display: none;
+    }
 }
 
 
@@ -253,11 +274,12 @@ span.fade {
     opacity: 1;
     transition: opacity 2s ease;
     /* transition: all 3s ease; */
-    top: -191px;
+    top: -20.5vh;
+    left: 0;
 }
 
 .navinnav {
-    position: relative;
+    /* position: relative; */
     opacity: 1;
     transition: opacity 0.5s ease;
 }
@@ -293,7 +315,8 @@ span.fade {
     .menu {
 
         /* transition: all 3s ease; */
-        top: 0;
+        top: 10vh;;
+        
     }
 
     .menu-itm {
@@ -304,6 +327,33 @@ span.fade {
         /* height: 10vh; */
     }
 }
+/* BREADCRUMB */
+.breadcrumb {
+    padding: 0 .5rem;
+}
+
+.breadcrumb ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+    
+.breadcrumb li:not(:last-child)::after {
+    display: inline-block;
+    margin: 0 .25rem;
+    content: "→";
+}
+
+a:active, a:focus, a:hover {
+    text-decoration: none;
+}
+.active {
+    background-color: var(--bg-color);
+    color: var(--white);
+}
+
 
 /* MAIN HISTOIRE */
 .title_main {
@@ -492,6 +542,15 @@ span.fade {
 }
 
 
+.section_choice{
+    display: flex;
+align-items: center;
+align-content: center;
+text-align: center;
+justify-content: center;
+flex-wrap: wrap;
+}
+
 .title-button {
     margin: 0 auto;
     display: flex;
@@ -519,10 +578,16 @@ span.fade {
 
 .choice-itm {
     border-radius: 1rem;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    /* height: 100%; */
     background-color: black;
     font-size: 1rem;
+    border-radius: 1rem;
+    border: solid 2px var(--white);
+    color: var(--white);
+    text-decoration: none;
+    padding: 1rem;
+
 }
 
 .choice-itm:hover {
@@ -580,6 +645,11 @@ span.fade {
     .button-item {
         width: calc(50% - 1rem);
     }
+
+    .choice-itm {
+        width: calc(50% - 1rem);
+    }
+
 
 }
 
@@ -681,4 +751,54 @@ span.fade {
 
 .selected {
         background-color: var(--white);
+}
+
+
+@media screen and (min-width:1270px) {
+
+    .form {
+        display: flex;
+        justify-content: center;
+        /* align-items: center;
+    text-align: center; */
+        flex-direction: column;
+        gap: 2rem;
+        color: var(--white)
+
+    }
+
+    .form_group {
+        gap: 0.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form_item {
+        width: 100%;
+        color: var(--white)
+    }
+
+    .input {
+        width: 100%;
+        height: 3vh;
+    }
+
+}
+.form_text{
+    width : 100%;
+}
+.form_buton{
+    width: 50%;
+}
+
+.form_item {
+    color: var(--white)
+}
+
+.node{border: 1px white solid;
+padding: 0.5rem;
+list-style: none;
+margin: 0.5rem;}
+.hidden {
+    display: none;
 }

@@ -1,46 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php
+require 'includes/header.php';
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Almendra:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="cssfilrouge.css">
-    <title>Fil Rouge</title>
-</head>
-
-<body class="PlayCreateJDR">
-
-
-    <header>
-        <div class="nav-logo">
-        <img class="header-logo"
-            src="graphique-vectoriel-de-l-élément-silhouette-hydra-monstre-illustration-d-un-design-la-isolée-sur-le-fond-blanc-204621519 1.png"
-            alt="">
-        <section class="header">
-            <div class="header-div">
-                <h1 class="header-tlt"> Play&CreateJDR</h1>
-            </div>
-        </section>
-</div>
-        <nav class="nav">
-            <div class="nav-contenaire-name">
-                <h2 class="nav-name">P&CJDR</h2>
-                <a href="#"> <img class="header-logo"
-                        src="graphique-vectoriel-de-l-élément-silhouette-hydra-monstre-illustration-d-un-design-la-isolée-sur-le-fond-blanc-204621519 1.png"
-                        alt=""> </a>
-            </div>
-            <ul class="nav-ul"> 
-                <a class="nav-logo" href="#">  <img class="header-logo" src="graphique-vectoriel-de-l-élément-silhouette-hydra-monstre-illustration-d-un-design-la-isolée-sur-le-fond-blanc-204621519 1.png" alt=""> </a>
-            <li><a class="nav_lnk" href="Filrouge.html">Accueil</a> </li>
-            <li><a class="nav_lnk" href="filrougeannuaire.html"> Histoires </a></li>
-            <li><a class="nav_lnk" href="dashboard.html">Dashboard</a></li>
-            <li><a class="nav_lnk" href="connexion.html">Compte</a> </li>
-        </ul>
-        </nav>
+?>
     </header>
     <h1 class="title_main">Scénarios</h1>
 
@@ -69,13 +30,13 @@
                     <a class="history-lnk" href="#"><img class="history-img"
                             src="img/vallee_des_dieux_illustrationc_anato_finnstark-ld 1.png"
                             alt="image fantastique d'un grand arbre"></a>
-                    <a href="filrougejdr.html">
+                    <a href="jdr.php">
                         <h2 class="history-tlt"> Réincartaysie</h2>
                     </a>
                     <h3 class="history-theme"> Fantasy</h3>
                     <p class="history-resume">Réincarne toi dans un monde de fantasy et voit où tes choix te conduiront:
                         devient roi du monde ou arriveras-tu à sortir de la forêt</p>
-                    <a href="" class="history-button"> Commencer l'histoire </a>
+                    <a href="jdr.php" class="history-button"> Commencer l'histoire </a>
                 </div>
             </article>
 
@@ -102,5 +63,5 @@
     </main>
 
 </body>
-
+<script src="menuscript.js"></script>
 </html>
