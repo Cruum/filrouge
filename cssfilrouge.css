@@ -411,6 +411,8 @@ a:active, a:focus, a:hover {
 @media screen and (min-width:1270px) {
     .histories {
         display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
     }
 
     .history {

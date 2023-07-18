@@ -6,11 +6,13 @@ if (isset($_POST['initialisation'])) {
 
     $nameJDR = $_POST['nameJDR'];
     $describe = $_POST['describe'] ;
-    $query = $dbCo->prepare("INSERT INTO history (name_history, describre_history) VALUES (:nameJDR, :describe)");
+    $query = $dbCo->prepare("INSERT INTO history (name_history, describe_history) VALUES (:nameJDR, :describe)");
     $isOk = $query->execute([
         ':nameJDR' => strip_tags($nameJDR),
         ':describe' => strip_tags($describe), 
     ]);
+     if ($query->rowCount()) {
+    }
     header('Location:createhistory.php?msg=' . ($isOk ? 'Tous a été ajoutée' : 'Un problème a été rencontré lors de l\'ajout de la tâche'));
     exit;
 }
@@ -29,6 +31,8 @@ if (isset($_POST['submit'])) {
         ':tittleNode' => strip_tags($tittleNode),
         ':id_history' => intval(strip_tags($idHistory))
     ]);
+     if ($query->rowCount()) {
+    }
     header('Location:affectation.php?id='. intval($idHistory).'&msg=' . ($isOk ? 'Tous a été ajoutée' : 'Un problème a été rencontré lors de l\'ajout de la tâche'));
     exit;
 }
@@ -44,6 +48,8 @@ if (isset($_POST['delete'])) {
     $isOk = $query->execute([
         ':id_history' => intval(strip_tags($idHistory))
     ]);
+     if ($query->rowCount()) {
+    }
     header('Location:modification.php?msg=' . ($isOk ? 'Tous a été supprimé' : 'Un problème a été rencontré lors de la suppression de la tâche'));
     exit;
 }

@@ -15,7 +15,6 @@
                     <h3 class="history-theme"> thèmes</h3>
                     <p class="history-resume">'.$history['describe_history'].'</p>
                     <div class="buttonMJ">
-                    
                     <form class="form_group" action="actions.php" method="POST">
                     <input type="hidden" name="id_history" value="' . $history['id_history'] . '">
                     <button class="buttonplus" type="submit" value="' . $history['id_history'] . '" name="id_history">➕</button>

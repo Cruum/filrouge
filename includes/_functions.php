@@ -10,9 +10,9 @@ function selectContext($result)
     return  $arrayHistory= array_map(fn($v) => '<option class="input" type="text" name="idNode" id-node="'.$v['id-node'] .'" value="'.$v['id-node'] .'">'.$v['text'].'</option> '  ,$result);
         }
 
-function selectText($result)
+function selectText($result, $key)
         {    
-    return  $arrayHistory= array_map(fn($v) => '<h4 class="tittle_node" >'.$v['text'].'</h4> '  ,$result);
+    return  array_map(fn($v) => '<h4 class="tittle_node" >'.$v[$key].'</h4> '  ,$result);
         }
         
 function selectTittle($result)
@@ -43,4 +43,11 @@ function getNavigation(array $breadcrumb): string
         
             return '<nav class="breadcrumb">' . getListFromArray($links) . '</nav>';
         } 
+
+function selectChoice($result)
+{
+    $arrayChoice = array_map(fn($choice) => ['id' => $choice['id_choice'], 'text' => $choice['text_button']], $result);
+           
+    return array_map(fn($v) => '<option class="test" data-id="'.$v['id'].'">'.$v['text'].' </option>', $arrayChoice);
+};
 ?>

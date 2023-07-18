@@ -51,7 +51,7 @@
                                <!-- <nav class="menu" id="menu"> -->
                                    <ul class="menulist" id="menuHistoire">
                                        <li class="menu-itm"><a class="li_lnk menulnk" href="annuaire.php"> Jouer</a></li>
-                                       <li class="menu-itm"><a class="li_lnk menulnk" href="creationhistory.php"> Créer </a></li>
+                                       <li class="menu-itm"><a class="li_lnk menulnk" href="createhistory.php"> Créer </a></li>
                                        <li class="menu-itm"><a class="li_lnk menulnk" href="connexion.php">Modifier</a></li>
                                    </ul>
                                <!-- </nav> -->

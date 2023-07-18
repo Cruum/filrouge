@@ -78,3 +78,54 @@ if ($data['action'] === 'rename' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
     ]);
     exit;
 }
+
+
+if ($data['action'] === 'renameNode' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
+    $id = intval(strip_tags($data['idChoice']));
+    $name = trim(strip_tags($data['choiceText']));
+    $query = $dbCo->prepare("UPDATE `node` SET `text` = :text WHERE `id_history` = :idHistory;");
+    $isOk = $query->execute([
+        'idHistory' => $id,
+        'text' => $name
+    ]);
+    echo json_encode([
+        'result' => $isOk && $query->rowCount() > 0,
+        'idHistory' => $id,
+        'text' => $name
+    ]);
+    exit;
+}
+
+
+if ($data['action'] === 'addChoiceDestination' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
+    $id = intval(strip_tags($data['idNode']));
+    $idChoice = intval(strip_tags($data['idChoice']));
+    $query = $dbCo->prepare("UPDATE `choice` SET `id_node_destination` = :id WHERE `id_choice` = :idChoice;");
+    $isOk = $query->execute([
+        'id' => $id,
+        'idChoice' => $idChoice
+    ]);
+    echo json_encode([
+        'result' => $isOk && $query->rowCount() > 0,
+        'idNode' => $id,
+        'idChoice' => $idChoice
+    ]);
+    exit;
+}
+
+
+// if ($data['action'] === 'addChoiceDestination' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
+//     $id = intval(strip_tags($data['idNode']));
+//     $idDestination = intval(strip_tags($data['idDestination']));
+//     $query = $dbCo->prepare("UPDATE `choice` SET `id_node_destination` = :idDestination WHERE `id_node_parent` = :id;");
+//     $isOk = $query->execute([
+//         'id' => $id,
+//         'idDestination' => $idDestination
+//     ]);
+//     echo json_encode([
+//         'result' => $isOk && $query->rowCount() > 0,
+//         'idNode' => $id,
+//         'idDestination' => $idDestination
+//     ]);
+//     exit;
+// }

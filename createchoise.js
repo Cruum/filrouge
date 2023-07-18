@@ -1,6 +1,7 @@
 const btn = document.getElementById('add_choise');
 const choiceZone = document.getElementById('choice_zone');
 const list = document.getElementById('list');
+const selectTheme = document.querySelector('#theme-task');
 console.log(btn);
 
 //ADD BUTTON
@@ -49,28 +50,34 @@ function addTextChoice(text, id) {
     const paraph = document.createElement("p");
     const buttonLess = document.createElement("button");
     const buttonEdit = document.createElement("button");
+    const option = document.createElement("option");
 
     listItem.classList.add("node")
     buttonLess.classList.add("button-delete")
     buttonEdit.classList.add("js-btn-rename")
-    
+    option.classList.add("test")
+
     paraph.innerText = text;
     buttonLess.innerText = "➖";
     buttonEdit.innerText = 'Edit';
-    
+    option.innerText = text;
+
     list.appendChild(listItem);
     listItem.appendChild(divInLi);
     divInLi.appendChild(paraph);
     divInLi.appendChild(buttonEdit)
     divInLi.appendChild(buttonLess)
-    
+    selectTheme.appendChild(option)
+
+
     listItem.setAttribute('data-id', id)
     buttonLess.setAttribute("type", "button");
     buttonLess.setAttribute('data-id', id)
     buttonEdit.setAttribute('data-id', id)
     buttonEdit.setAttribute('type', 'button')
     paraph.setAttribute('data-text-id', id)
-    
+    selectTheme.setAttribute('data-text-id', id)
+    option.setAttribute('data-id', id)
 }
 
 
@@ -78,16 +85,38 @@ function addTextChoice(text, id) {
 
 function callDeleteButtonClick(e) {
     const listItem = e.target.closest('.node');
-    const id = listItem.dataset.idNode;
+    const id = e.target.dataset.id;
+    console.log(id);
     deleteBtn(e.target.closest('.node').dataset.id)
         .then(apiResponse => {
             if (!apiResponse.result) {
                 console.error('Problème avec la requête.');
                 return;
             }
+            const elements = document.querySelectorAll(`[data-id="${id}"]`);
+            console.log(elements);
+            elements.forEach(element => element.remove());
             e.target.closest('.node').remove()
         });
 }
+
+
+// function callDeleteButtonClick(e) {
+//     const listItem = e.target.closest('.node');
+//     const id = listItem.dataset.idNode;
+//     deleteBtn(id)
+//         .then(apiResponse => {
+//             if (!apiResponse.result) {
+//                 console.error('Problème avec la requête.');
+//                 return;
+//             }
+//             const elements = document.querySelectorAll(`[data-id="${id}"]`);
+//             elements.forEach(element => element.remove());
+//         });
+// }
+
+
+
 
 list.addEventListener('click', e => {
     if (e.target.classList.contains('button-delete')) {
@@ -109,7 +138,7 @@ function deleteBtn(idChoice) {
 
 
 //RENAME 
-//Can use rename function on new create choice
+//Can use rename function on new create
 
 list.addEventListener('click', e => {
     if (e.target.classList.contains('js-btn-rename')) {
@@ -187,4 +216,59 @@ async function callAPI(method, data) {
     catch (error) {
         console.error("Unable to load datas from the server : " + error);
     }
+}
+
+
+// const test = document.querySelectorAll('option.test')
+// console.log(test);
+// test.addEventListener('click', e => { console.log(e);})
+
+
+selectTheme.addEventListener('change', (e) => {
+    const selectedChoiceValue = e.target.value;
+  const selectedChoiceId = e.target.options[e.target.selectedIndex].dataset.id;
+  const selectNode = e.target.closest('.select').dataset.id
+  console.log(selectedChoiceValue);
+  addChoseDestination(selectNode, selectedChoiceId)
+  .then(apiResponse => {
+    if (apiResponse.result) addChoiceDestination(selectedChoiceValue, apiResponse.idChoice );
+    else console.error('Erreur lors de la création du texte.');
+    console.log(apiResponse);
+});
+});
+
+function addChoiceDestination(value, id){
+    const ul = document.getElementById('choiceContext'); 
+    const listItem = document.createElement('li');
+    const buttonLess = document.createElement("button");
+    
+    listItem.innerText = value;
+    buttonLess.innerText = "➖";
+    
+    ul.appendChild(listItem)
+    listItem.appendChild(buttonLess)
+
+    listItem.setAttribute('data-id', id)
+    buttonEdit.setAttribute('type', 'button')
+
+}
+
+
+
+
+
+
+
+
+
+
+function addChoseDestination(idNode, idChoice) {
+    const data = {
+        action: 'addChoiceDestination',
+        idNode: idNode,
+        idChoice: idChoice,
+        // token: getCsrfToken()
+    }
+    console.log(data);
+    return callAPI('PUT', data);
 }
