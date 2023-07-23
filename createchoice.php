@@ -13,7 +13,6 @@ require 'includes/_config.php';
 
 
 
-
 $idHistory = $_GET['idhistory'];
 $query = $dbCo->prepare("SELECT id_history, name_history FROM history WHERE id_history = :id");
 $query->execute([
@@ -24,7 +23,7 @@ $result = $query->fetchAll();
 ?>
 <main class="main-histoire">
 
-    <?= getNavigation($breadcrumb) ?>
+
 
 
     <h1 class="title_main">Création des choix</h1>
@@ -54,12 +53,13 @@ $result = $query->fetchAll();
         // var_dump($choices);
 
 
-        echo '<ul id="choiceContext">Choix qui mènent à ce contexte:'
+        echo '<ul class="choice_list_destination" id="choiceContext" data-id="'.$_GET['id'].'">Choix qui mènent à ce contexte:'
 
         ?>
         <?php
         foreach ($choices as $choice) {
-            echo '<li data-id = '.$choice['id_choice'] .'>' . $choice['text_button']  .  '      <button class="button-delete" data-id="' . $choice['id_choice'] . '" >➖</button>
+            echo '<li class="item_choice_destination" data-id = '.$choice['id_choice'] .'>' . $choice['text_button']  .  
+            '      <button class="button-delete" data-id="' . $choice['id_choice'] . '" >➖</button>
             </li>';
         };
         echo '</ul>';
@@ -131,7 +131,7 @@ $result = $query->fetchAll();
 
     <button id="add_choise"> ➕ </button>
 
-
+    <a href="createhistory.php">Créer votre histoire</a>
 </main>
 </body>
 <script src="createchoise.js"></script>

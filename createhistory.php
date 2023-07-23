@@ -10,7 +10,7 @@ require 'includes/_config.php';
 </header>
 
 <main class="main-histoire">
-<?= getNavigation($breadcrumb)?>
+
     <h1 class="title_main">Création du contenu</h1>
     <h2 class="title_main">Titre du JDR</h2>
 

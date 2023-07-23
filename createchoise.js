@@ -2,6 +2,7 @@ const btn = document.getElementById('add_choise');
 const choiceZone = document.getElementById('choice_zone');
 const list = document.getElementById('list');
 const selectTheme = document.querySelector('#theme-task');
+const listDestination = document.getElementById('choiceContext'); 
 console.log(btn);
 
 //ADD BUTTON
@@ -77,7 +78,7 @@ function addTextChoice(text, id) {
     buttonEdit.setAttribute('type', 'button')
     paraph.setAttribute('data-text-id', id)
     selectTheme.setAttribute('data-text-id', id)
-    option.setAttribute('data-id', id)
+    option .setAttribute('data-id', id)
 }
 
 
@@ -185,7 +186,6 @@ function createForm(id, name) {
 
 
 function renameChoice(idChoice, choiceText) {
-
     const data = {
         action: 'rename',
         idChoice: idChoice,
@@ -199,6 +199,103 @@ function renameChoice(idChoice, choiceText) {
 function updateChoiceText(id, name) {
     document.querySelector(`[data-text-id="${id}"]`).innerText = name;
 }
+
+
+
+
+// const test = document.querySelectorAll('option.test')
+// console.log(test);
+// test.addEventListener('click', e => { console.log(e);})
+
+//Add a choice which go on this context
+selectTheme.addEventListener('change', (e) => {
+    const selectedChoiceValue = e.target.value;
+  const selectedChoiceId = e.target.options[e.target.selectedIndex].dataset.id;
+  const selectNode = e.target.closest('.select').dataset.id
+  console.log(selectedChoiceValue);
+  addChoseDestination(selectNode, selectedChoiceId)
+  .then(apiResponse => {
+    if (apiResponse.result) addChoiceDestination(selectedChoiceValue, apiResponse.idChoice );
+    else console.error('Erreur lors de la création du texte.');
+    console.log(apiResponse);
+});
+});
+
+//create choice on choice direction on node
+
+
+
+function addChoiceDestination(value, id){
+    const listItem = document.createElement('li');
+    const buttonLess = document.createElement("button");
+    
+    listItem.innerText = value;
+    buttonLess.innerText = "➖";
+    listItem.classList.add("item_choice_destination")
+    buttonLess.classList.add("button-delete")
+
+    listDestination.appendChild(listItem)
+    listItem.appendChild(buttonLess)
+    
+    listItem.setAttribute('data-id', id)
+    buttonLess.setAttribute('data-id', id)
+    
+    
+}
+
+//Give data on choice for choise direction on this context
+function addChoseDestination(idNode, idChoice) {
+    const data = {
+        action: 'addChoiceDestination',
+        idNode: idNode,
+        idChoice: idChoice,
+        // token: getCsrfToken()
+    }
+    console.log(data);
+    return callAPI('PUT', data);
+}
+
+
+//
+
+listDestination.addEventListener('click', e => {
+    if (e.target.classList.contains('button-delete')) {
+        console.log(e);
+        removeChoiceDestination(e);
+    }
+});
+
+
+//remove choice destination 
+function removeChoiceDestination(e) {
+    const listItem = e.target.closest('.choice_list_destination');
+    console.log(listItem);
+    const id = e.target.dataset.id;
+    console.log(id);
+    removeBtn(e.target.closest('.choice_list_destination').dataset.id, id )
+        .then(apiResponse => {
+            if (!apiResponse.result) {
+                console.error('Problème avec la requête.');
+                return;
+            }
+            e.target.closest('.item_choice_destination').remove();
+        });
+}
+
+//Call api and give data 
+function removeBtn(id_node_destination, idChoice) {
+    const data = {
+        action: 'remove',
+        id_node_destination: id_node_destination,
+        idChoice: idChoice,
+        // token: getCsrfToken()
+    }
+    console.log(data);
+    return callAPI('PUT', data);
+
+};
+
+
 
 
 
@@ -216,59 +313,4 @@ async function callAPI(method, data) {
     catch (error) {
         console.error("Unable to load datas from the server : " + error);
     }
-}
-
-
-// const test = document.querySelectorAll('option.test')
-// console.log(test);
-// test.addEventListener('click', e => { console.log(e);})
-
-
-selectTheme.addEventListener('change', (e) => {
-    const selectedChoiceValue = e.target.value;
-  const selectedChoiceId = e.target.options[e.target.selectedIndex].dataset.id;
-  const selectNode = e.target.closest('.select').dataset.id
-  console.log(selectedChoiceValue);
-  addChoseDestination(selectNode, selectedChoiceId)
-  .then(apiResponse => {
-    if (apiResponse.result) addChoiceDestination(selectedChoiceValue, apiResponse.idChoice );
-    else console.error('Erreur lors de la création du texte.');
-    console.log(apiResponse);
-});
-});
-
-function addChoiceDestination(value, id){
-    const ul = document.getElementById('choiceContext'); 
-    const listItem = document.createElement('li');
-    const buttonLess = document.createElement("button");
-    
-    listItem.innerText = value;
-    buttonLess.innerText = "➖";
-    
-    ul.appendChild(listItem)
-    listItem.appendChild(buttonLess)
-
-    listItem.setAttribute('data-id', id)
-    buttonEdit.setAttribute('type', 'button')
-
-}
-
-
-
-
-
-
-
-
-
-
-function addChoseDestination(idNode, idChoice) {
-    const data = {
-        action: 'addChoiceDestination',
-        idNode: idNode,
-        idChoice: idChoice,
-        // token: getCsrfToken()
-    }
-    console.log(data);
-    return callAPI('PUT', data);
 }

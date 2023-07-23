@@ -23,10 +23,10 @@ $query2->execute([
     // ':id' => intval(strip_tags($idNode))
 ]);
 $choices = $query2->fetchALL();
-// var_dump($choices)
+var_dump($choices);
 ?>
 <main class="main-histoire">
-<?= getNavigation($breadcrumb)?>
+
     <h1 class="title_main">Affecter les choix au histoire</h1>
     <h2 class="title_main"> <?php echo implode(selectTittle($result))  ?> </h2>
 
@@ -38,8 +38,8 @@ $choices = $query2->fetchALL();
         ?>
         <li class="node">
             <div>
-                <a href="createchoice.php?id=<?php echo $node['id_node']; ?>&idhistory=<?php echo $node['id_history']; ?>"><?php echo $node['tittleNode']; ?></a>
-                <button type="button" class="js-btn-rename" data-id="<?php echo $node['id_node']; ?>">Edit</button>
+                <a href="createchoice.php?id=<?php echo $node['id_node']; ?>&idhistory=<?php echo $node['id_history']; ?>" data-id=""><?php echo $node['tittleNode']; ?></a>
+                <button type="button" class="js-btn-rename" data-id="<?php echo $node['id_node']; ?>">Edit</button> 
                 <p data-text-id="<?php echo $node['id_node']; ?>"><?php echo $node['text']; ?></p>
             </div>
             <details>
@@ -63,7 +63,7 @@ $choices = $query2->fetchALL();
         <input type="submit" value="valider">
     </form>
 </template>
-
+ <a href="createhistory.php">Créer votre histoire</a>
     </main>
 </body>
 <script src="changetext.js"></script>

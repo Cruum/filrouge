@@ -113,6 +113,19 @@ if ($data['action'] === 'addChoiceDestination' && $_SERVER['REQUEST_METHOD'] ===
     exit;
 }
 
+if ($data['action'] === 'remove' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
+    $id_node_destination = intval(strip_tags($data['id_node_destination']));
+    $idChoice = intval(strip_tags($data['idChoice']));
+    $query = $dbCo->prepare("UPDATE choice SET id_node_destination = NULL WHERE `id_choice` = :idChoice;");
+    $isOk = $query->execute([
+    'idChoice' => $idChoice
+]);
+    echo json_encode([
+        'result' => $isOk && $query->rowCount() > 0,
+        'idChoice' => $idChoice
+    ]);
+    exit;
+}
 
 // if ($data['action'] === 'addChoiceDestination' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
 //     $id = intval(strip_tags($data['idNode']));

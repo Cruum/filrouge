@@ -34,15 +34,15 @@ function getListFromArray(array $array, string $ulClass = '', string $liClass = 
     return '<ul'.$ulClass.'>' . implode('', $a) . '</ul>';
 }
 
-function getNavigation(array $breadcrumb): string
-        {
-            $links = array_map(function ($page) {
-                $active = $page['link'] == basename($_SERVER['PHP_SELF']) ? ' active' : '';
-                return '<a href="' . $page['link'] . '" class="breadcrumb' . $active . '">' . $page['title'] . '</a>';
-            }, $breadcrumb);
+// function getNavigation(array $breadcrumb): string
+//         {
+//             $links = array_map(function ($page) {
+//                 $active = $page['link'] == basename($_SERVER['PHP_SELF']) ? ' active' : '';
+//                 return '<a href="' . $page['link'] . '" class="breadcrumb' . $active . '">' . $page['title'] . '</a>';
+//             }, $breadcrumb);
         
-            return '<nav class="breadcrumb">' . getListFromArray($links) . '</nav>';
-        } 
+//             return '<nav class="breadcrumb">' . getListFromArray($links) . '</nav>'; getNavigation($breadcrumb)
+//         } 
 
 function selectChoice($result)
 {

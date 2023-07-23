@@ -1,6 +1,6 @@
 <?php
 require 'includes/header.php';
-
+require 'includes/_database.php';
 ?>
     </header>
     <h1 class="title_main">Scénarios</h1>
@@ -24,7 +24,18 @@ require 'includes/header.php';
             </div>
         </section>
 
-        <section class="histories">
+     <?php   $query = $dbCo->prepare("SELECT id_history, describe_history, name_history, image FROM history");
+$query->execute();
+$result = $query->fetchAll();
+var_dump($result);
+?>
+
+        <?php  
+require 'includes/blocbook.php';
+        ?>
+
+
+        <!-- <section class="histories">
             <article class="history-contenaire">
                 <div class="history contenaire contenaire-dimension">
                     <a class="history-lnk" href="#"><img class="history-img"
@@ -59,7 +70,7 @@ require 'includes/header.php';
 
 
 
-        </section>
+        </section> -->
     </main>
 
 </body>

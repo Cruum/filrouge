@@ -66,6 +66,22 @@ if (isset($_POST['id_history'])) {
     exit;
 }
 
+
+if (isset($_POST['remove'])) {
+
+    $idHistory = $_POST['delete'];
+
+    $query = $dbCo->prepare("DELETE * FROM `history` h  JOIN node n ON h.id_history = n.id_history  
+    LEFT JOIN choice c ON n.id_node = c.id_node_parent WHERE h.id_history = 3;");
+    $isOk = $query->execute([
+        ':id_history' => intval(strip_tags($idHistory))
+    ]);
+     if ($query->rowCount()) {
+    }
+    header('Location:modification.php?msg=' . ($isOk ? 'Tous a été supprimé' : 'Un problème a été rencontré lors de la suppression de la tâche'));
+    exit;
+}
+
 // if (isset($_GET['createchoice'])){
 
 //     $idHistory = $_GET['id'];
