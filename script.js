@@ -227,7 +227,6 @@
 
 
 
-
 const textElement = document.getElementById('histoire');
 const optionButtonsElement = document.getElementById('div_button')
 const optionButtonschoice = document.getElementById('zone_choice')

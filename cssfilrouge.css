@@ -50,6 +50,7 @@ ul,
 li,
 figure,
 p,
+label,
 h1,
 h2,
 h3,
@@ -207,11 +208,14 @@ span.fade {
 
 .nav_link_destok{
     display: none;
+<<<<<<< HEAD
     color: black;
 }
 
 .nav_link_destok :hover{
     text-decoration: underline;
+=======
+>>>>>>> 8e1f66bcb11ab5738652d71781c239647a68728e
 }
 
 @media screen and (min-width:1270px) {
@@ -260,6 +264,7 @@ span.fade {
     }
     .nav_link_destok{
         display: block;
+<<<<<<< HEAD
 
     }
     .nav_link_destok :hover{
@@ -267,6 +272,8 @@ span.fade {
         cursor: pointer;
         text-decoration: underline;
 
+=======
+>>>>>>> 8e1f66bcb11ab5738652d71781c239647a68728e
     }
     .svg{
         display: none;
@@ -335,9 +342,7 @@ span.fade {
         border-top: 1px black solid;
         border-bottom: none;
     }
-    .test{
-        /* height: 10vh; */
-    }
+   
 }
 /* BREADCRUMB */
 .breadcrumb {
@@ -528,6 +533,34 @@ a:active, a:focus, a:hover {
 
 
 
+@media screen and (min-width:1270px) {
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 2rem;
+
+}
+.form_group{
+    gap: 0.5rem;
+display: flex;
+flex-direction: column;
+}
+
+.form_item{
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+height: 3vh;
+}
+
+}
+
 /* BOUTONS */
 .buttonMJ {
     display: flex;
@@ -542,6 +575,7 @@ a:active, a:focus, a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     text-decoration: none;
     font-size: 1.5rem;
     color: #FFFFFF;
@@ -549,12 +583,20 @@ a:active, a:focus, a:hover {
     border-radius: 100%;
     aspect-ratio: 1/1;
     width: 2rem;
-    text-align: center;
     border: 2px solid var(--white);
     line-height: 1;
 
 }
 
+/* 
+.section_choice{
+    display: flex;
+align-items: center;
+align-content: center;
+text-align: center;
+justify-content: center;
+flex-wrap: wrap;
+} */
 
 .section_choice{
     display: flex;
@@ -582,9 +624,11 @@ flex-wrap: wrap;
 }
 
 .button-item {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
     width: 100%;
-    border-radius: 1rem;
-    border: solid 2px var(--white);
     margin: 0.5rem;
     height: 5rem;
     color: var(--white);
@@ -601,7 +645,11 @@ flex-wrap: wrap;
     color: var(--white);
     text-decoration: none;
     padding: 1rem;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 8e1f66bcb11ab5738652d71781c239647a68728e
 }
 
 .choice-itm:hover {
@@ -643,7 +691,10 @@ flex-wrap: wrap;
     box-shadow: var(--white) 1px 4px 24px;
     margin: 0 0.5rem;
 }
-
+.reroll{
+    border-radius: 1rem;
+    border: solid 2px var(--white);  
+}
 @media screen and (min-width:1270px) {
 
     .title-button {
@@ -657,6 +708,7 @@ flex-wrap: wrap;
     }
 
     .button-item {
+<<<<<<< HEAD
         width: 90%;
         height: 100%;
         margin-left: 1.5rem;
@@ -667,6 +719,19 @@ flex-wrap: wrap;
         margin: 0.5rem;
     }
 
+=======
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 1rem;
+       
+    }
+
+    .choice-itm{
+        width: calc(50% - 1rem);
+    }
+
+>>>>>>> 8e1f66bcb11ab5738652d71781c239647a68728e
 
 }
 
@@ -751,14 +816,6 @@ flex-wrap: wrap;
 
 /* fin d'animation */
 
-
-
-.choice-itm {
-
-    color: var(--white);
-    text-decoration: none;
-
-}
 
 /* FOOTER */
 

@@ -38,7 +38,7 @@ require 'includes/blocbook.php';
         <!-- <section class="histories">
             <article class="history-contenaire">
                 <div class="history contenaire contenaire-dimension">
-                    <a class="history-lnk" href="#"><img class="history-img"
+                    <a class="history-lnk" href="filrougejdr.html"><img class="history-img"
                             src="img/vallee_des_dieux_illustrationc_anato_finnstark-ld 1.png"
                             alt="image fantastique d'un grand arbre"></a>
                     <a href="jdr.php">
