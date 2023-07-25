@@ -37,7 +37,7 @@
                                <div class="nav_link_destok"> Accueil</div>
                            </a> </li>
        
-                       <li class="test"><a class="nav_lnk" id="principal">
+                       <li class="test"><a  class="nav_lnk" id="principal">
        
                                <svg class="svg" xmlns="http://www.w3.org/2000/svg"
                                    viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -51,8 +51,8 @@
                                <!-- <nav class="menu" id="menu"> -->
                                    <ul class="menulist" id="menuHistoire">
                                        <li class="menu-itm"><a class="li_lnk menulnk" href="annuaire.php"> Jouer</a></li>
-                                       <li class="menu-itm"><a class="li_lnk menulnk" href="createhistory.php"> Créer </a></li>
-                                       <li class="menu-itm"><a class="li_lnk menulnk" href="connexion.php">Modifier</a></li>
+                                       <li class="menu-itm"><a class="li_lnk menulnk" href="createjdr.php"> Créer </a></li>
+                                       <li class="menu-itm"><a class="li_lnk menulnk" href="modification.php">Modifier</a></li>
                                    </ul>
                                <!-- </nav> -->
                            </div>

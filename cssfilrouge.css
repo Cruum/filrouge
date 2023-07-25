@@ -207,6 +207,11 @@ span.fade {
 
 .nav_link_destok{
     display: none;
+    color: black;
+}
+
+.nav_link_destok :hover{
+    text-decoration: underline;
 }
 
 @media screen and (min-width:1270px) {
@@ -255,6 +260,13 @@ span.fade {
     }
     .nav_link_destok{
         display: block;
+
+    }
+    .nav_link_destok :hover{
+        color: -webkit-link;
+        cursor: pointer;
+        text-decoration: underline;
+
     }
     .svg{
         display: none;
@@ -645,11 +657,14 @@ flex-wrap: wrap;
     }
 
     .button-item {
-        width: calc(50% - 1rem);
+        width: 90%;
+        height: 100%;
+        margin-left: 1.5rem;
     }
 
     .choice-itm {
         width: calc(50% - 1rem);
+        margin: 0.5rem;
     }
 
 

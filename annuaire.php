@@ -27,7 +27,7 @@ require 'includes/_database.php';
      <?php   $query = $dbCo->prepare("SELECT id_history, describe_history, name_history, image FROM history");
 $query->execute();
 $result = $query->fetchAll();
-var_dump($result);
+// var_dump($result);
 ?>
 
         <?php  

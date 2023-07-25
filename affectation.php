@@ -23,13 +23,16 @@ $query2->execute([
     // ':id' => intval(strip_tags($idNode))
 ]);
 $choices = $query2->fetchALL();
-var_dump($choices);
+// var_dump($choices);
 ?>
 <main class="main-histoire">
-
+    
     <h1 class="title_main">Affecter les choix au histoire</h1>
     <h2 class="title_main"> <?php echo implode(selectTittle($result))  ?> </h2>
-
+    
+    <div>
+        <a class="history-button" href="createhistory.php">Créer votre histoire</a>
+    </div>
 
     <?php
 
@@ -63,7 +66,7 @@ var_dump($choices);
         <input type="submit" value="valider">
     </form>
 </template>
- <a href="createhistory.php">Créer votre histoire</a>
+    </section>
     </main>
 </body>
 <script src="changetext.js"></script>
