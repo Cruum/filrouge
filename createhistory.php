@@ -60,6 +60,6 @@ require 'includes/_config.php';
         </form>
     </section>
 
-
+    <script src="menuscript.js"></script>
 
 </main>

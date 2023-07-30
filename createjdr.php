@@ -38,6 +38,6 @@ require 'includes/_config.php';
     
     </section>
 
-
+    <script src="menuscript.js"></script>
 
 </main>

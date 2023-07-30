@@ -201,12 +201,6 @@ function updateChoiceText(id, name) {
 }
 
 
-
-
-// const test = document.querySelectorAll('option.test')
-// console.log(test);
-// test.addEventListener('click', e => { console.log(e);})
-
 //Add a choice which go on this context
 selectTheme.addEventListener('change', (e) => {
     const selectedChoiceValue = e.target.value;

@@ -1,8 +1,10 @@
 
 //RENAME 
 //Can use rename function on new create choice
+const liste = document.getElementById('ul');
 
-list.addEventListener('click', e => {
+
+liste.addEventListener('click', e => {
     if (e.target.classList.contains('js-btn-rename')) {
         handleEditButtonClick(e);
     }
@@ -20,13 +22,14 @@ console.log(name);
     li.appendChild(form);
     form.addEventListener('submit', e => {
         e.preventDefault();
+        
         renameChoice(e.target.dataset.formId, form.querySelector('input[name="text"]').value)
             .then(apiResponse => {
-                if (apiResponse.result) updateChoiceText(apiResponse.idChoice, apiResponse.choiceText);
+                if (apiResponse.result) updateChoiceText(apiResponse.idNode, apiResponse.text);
                 else console.error('Erreur lors du renommage.');
                 
                 form.remove();
-                document.querySelector(`.js-btn-rename[data-id="${apiResponse.idChoice}"]`).classList.remove('display');
+                document.querySelector(`.js-btn-rename[data-id="${apiResponse.idNode}"]`).classList.remove('display');
             });
     });
 }
@@ -37,7 +40,7 @@ console.log(name);
 function createForm(id, name) {
 const form = document.querySelector("#renameFormTemplate").content.cloneNode(true);
 
-form.querySelector('[name="choiceText"]').value = name;
+form.querySelector('[name="text"]').value = name;
 form.querySelector('[name="idChoice"]').value = id;
 form.querySelector('form').dataset.formId = id;
 
@@ -45,11 +48,11 @@ return form.querySelector('form');
 }
 
 
-function renameChoice(idChoice, choiceText) {
+function renameChoice(idNode, text) {
 
 const data = {
     action: 'renameText',
-    idHistory: idHistory,
+    idNode: idNode,
     text: text,
     // token: getCsrfToken()
 }

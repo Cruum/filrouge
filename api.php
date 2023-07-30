@@ -21,6 +21,7 @@ $isOk = false;
 //     exit;
 // }
 
+// htmlspecialchars()
 
 
 
@@ -142,3 +143,19 @@ if ($data['action'] === 'remove' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
 //     ]);
 //     exit;
 // }
+
+if ($data['action'] === 'renameText' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
+    $idNode = intval(strip_tags($data['idNode']));
+    $text = strip_tags($data['text']);
+    $query = $dbCo->prepare("UPDATE `node` SET `text` = :text WHERE `id_node` = :idNode;");
+    $isOk = $query->execute([
+        'idNode' => $idNode,
+        'text' => $text
+    ]);
+    echo json_encode([
+        'result' => $isOk && $query->rowCount() > 0,
+        'idNode' => $idNode,
+        'text' => $text
+    ]);
+    exit;
+}
