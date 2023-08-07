@@ -1,39 +1,102 @@
 <?php
 require 'includes/_database.php';
+session_start();
+
+//only if we have email and password
+if(!empty($_POST['email']) && !empty($_POST['password'])) 
+{
+    // Patch XSS
+    $email = htmlspecialchars($_POST['email']); 
+    $password = htmlspecialchars($_POST['password']);
+    
+    $email = strtolower($email); // email transformé en minuscule
+    
+    // On regarde si l'utilisateur est inscrit dans la table utilisateurs
+    $check = $dbCo->prepare('SELECT pseudo, email, password, token FROM gamer WHERE email = ?');
+    $check->execute(array($email));
+    $data = $check->fetch();
+    $row = $check->rowCount();
+    
+    
+
+    // Si > à 0 alors l'utilisateur existe
+    if($row > 0)
+    {
+        // Si le mail est bon niveau format
+        if(filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            // Si le mot de passe est le bon
+            if(password_verify($password, $data['password']))
+            {
+                // On créer la session et on redirige sur landing.php
+                $_SESSION['user'] = $data['token'];
+                header('Location: createjdr.php');
+                die();
+            }else{ header('Location: connexion.php?login_err=password'); die(); }
+        }else{ header('Location: connexion.php?login_err=email'); die(); }
+    }else{ header('Location: connexion.php?login_err=already'); die(); }
+}else{ header('Location: connexion.php'); die();} // si le formulaire est envoyé sans aucune données
 
 
 if (isset($_POST['initialisation'])) {
 
     $nameJDR = $_POST['nameJDR'];
     $describe = $_POST['describe'] ;
-    $query = $dbCo->prepare("INSERT INTO history (name_history, describe_history) VALUES (:nameJDR, :describe)");
-    $isOk = $query->execute([
-        ':nameJDR' => strip_tags($nameJDR),
-        ':describe' => strip_tags($describe), 
-    ]);
-     if ($query->rowCount()) {
-    }
+    $image = $_FILES['image']; // Utiliser $_FILES['image'] pour accéder aux informations sur le fichier
+    $wording =$_POST['wording'];
+
+    $queryGetType = $dbCo->prepare("SELECT id_type FROM type WHERE wording = :wording");
+    $queryGetType->execute([':wording' => $wording]);
+    $resultGetType = $queryGetType->fetch();
+    if ($resultGetType) {
+        $id_type = $resultGetType['id_type'];
+
+        // Requête d'insertion dans la table "history"
+        $query = $dbCo->prepare("INSERT INTO history (name_history, image, describe_history, id_type) VALUES (:nameJDR, :image, :describe, :id_type)");
+        $isOk = $query->execute([
+            ':nameJDR' => strip_tags($nameJDR),
+            ':image' => $image['name'], // Utiliser $img['name'] pour obtenir le nom du fichier
+            ':describe' => strip_tags($describe),
+            ':id_type' => intval($id_type)
+        ]);
+        // Déplacer le fichier téléchargé vers le dossier cible
+        $target_dir = getcwd() . "/uploaded/";
+$target_path = $target_dir . $image['name'];
+    $tmp_name = $image['tmp_name'];
+    // var_dump($tmp_name);
+
+    // var_dump($target_path);
+
+    $move_success = move_uploaded_file($tmp_name, $target_path);
+    // var_dump($move_success);
+    // exit;
     header('Location:createhistory.php?msg=' . ($isOk ? 'Tous a été ajoutée' : 'Un problème a été rencontré lors de l\'ajout de la tâche'));
     exit;
-}
+}else {
+    // Le wording spécifié n'existe pas dans la table "type"
+    echo "Le wording spécifié n'existe pas dans la table 'type'.";
+}}
 
 if (isset($_POST['submit'])) {
-
     $text = $_POST['story'];
-    $img = $_POST['img'] ;
+    $img = $_FILES['img']; // Utiliser $_FILES['monImage'] pour accéder aux informations sur le fichier
     $tittleNode = $_POST['tittleNode'];
     $idHistory = $_POST['idHistory'];
 
     $query = $dbCo->prepare("INSERT INTO node (text, img, tittleNode, id_history ) VALUES (:text, :img, :tittleNode, :id_history)");
     $isOk = $query->execute([
         ':text' => strip_tags($text),
-        ':img' => strip_tags($img), 
+        ':img' => $img['name'], // Utiliser $img['name'] pour obtenir le nom du fichier
         ':tittleNode' => strip_tags($tittleNode),
         ':id_history' => intval(strip_tags($idHistory))
     ]);
-     if ($query->rowCount()) {
-    }
-    header('Location:affectation.php?id='. intval($idHistory).'&msg=' . ($isOk ? 'Tous a été ajoutée' : 'Un problème a été rencontré lors de l\'ajout de la tâche'));
+
+    // Déplacer le fichier téléchargé vers le dossier cible
+    $tmp_name = $img['tmp_name'];
+    $target_path = "uploaded/" . $img['name'];
+    $move_success = move_uploaded_file($tmp_name, $target_path);
+
+    header('Location: affectation.php?id=' . intval($idHistory) . '&msg=' . ($isOk ? 'Tous a été ajoutée' : 'Un problème a été rencontré lors de l\'ajout de la tâche'));
     exit;
 }
 
@@ -66,6 +129,41 @@ if (isset($_POST['id_history'])) {
     exit;
 }
 
+
+
+if (isset($_POST['update_jdr'])) {
+    $nameJDR = $_POST['nameJDR'];
+    $describe = $_POST['describe'];
+    $idHistory = intval(strip_tags($_POST['update_jdr'])); 
+
+    // Vérifier si une nouvelle image a été choisie
+    if (!empty($_FILES['image']['name'])) {
+        // Une nouvelle image a été sélectionnée
+        $image = $_FILES['image'];
+        $target_dir = getcwd() . "/uploaded/";
+        $target_path = $target_dir . $image['name'];
+        $tmp_name = $image['tmp_name'];
+        $move_success = move_uploaded_file($tmp_name, $target_path);
+        $image_name = $image['name'];
+    } else {
+        // Aucune nouvelle image sélectionnée, utiliser l'ancienne valeur de l'image
+        $query = $dbCo->prepare("SELECT image FROM history WHERE id_history = :idHistory");
+        $query->execute([':idHistory' => $idHistory]);
+        $row = $query->fetch();
+        $image_name = $row['image'];
+    }
+
+    $query = $dbCo->prepare("UPDATE history SET name_history = :nameJDR, image = :image, describe_history = :describe WHERE id_history = :idHistory ");
+    $isOk = $query->execute([
+        ':nameJDR' => strip_tags($nameJDR),
+        ':image' => $image_name,
+        ':describe' => strip_tags($describe),
+        ':idHistory' => $idHistory,
+    ]);
+
+    header('Location:affectation.php?id=' . $idHistory . '&msg=' . ($isOk ? 'Tout a été ajouté' : 'Un problème a été rencontré lors de l\'ajout de la tâche'));
+    exit;
+}
 
 
 

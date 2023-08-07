@@ -7,26 +7,58 @@ require 'includes/header.php';
 </header>
 <main>
   <section>
-        <form class="position-absolute top-50 start-50 translate-middle">
+  <?php 
+                if(isset($_GET['login_err']))
+                {
+                    $err = htmlspecialchars($_GET['login_err']);
+
+                    switch($err)
+                    {
+                        case 'password':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> mot de passe incorrect
+                            </div>
+                        <?php
+                        break;
+
+                        case 'email':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> email incorrect
+                            </div>
+                        <?php
+                        break;
+
+                        case 'already':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> compte non existant
+                            </div>
+                        <?php
+                        break;
+                    }
+                }
+                ?> 
+        <form class="position-absolute top-50 start-50 translate-middle" action="connexions.php" method="post">
     <h1 class="fs-1 text-center">Connexion</h1>
     
             <div class="card p-3">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                 </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
+
+                <input type="hidden" name="token" value="' . $_SESSION['token'] . '">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         </div>
+        <a href="inscription.php">inscris-toi ici</a>
     </section>
 </main>
 
@@ -41,5 +73,5 @@ require 'includes/header.php';
     integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
     crossorigin="anonymous"></script>
 </body>
-<script src="menuscript.js"></script>
+<script src="js/menuscript.js"></script>
 </html>

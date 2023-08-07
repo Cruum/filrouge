@@ -2,7 +2,14 @@
 //RENAME 
 //Can use rename function on new create choice
 const liste = document.getElementById('ul');
+const edit =document.getElementById("editjdr")
 
+edit.addEventListener("click" , e =>
+{
+    const formEdit= document.querySelector(".form_display") 
+    console.log(formEdit);
+    formEdit.classList.toggle("display")
+})
 
 liste.addEventListener('click', e => {
     if (e.target.classList.contains('js-btn-rename')) {

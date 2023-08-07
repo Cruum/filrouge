@@ -159,3 +159,17 @@ if ($data['action'] === 'renameText' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
     ]);
     exit;
 }
+
+
+// if ($data['action'] === 'select' && $_SERVER['REQUEST_METHOD'] === 'PUT') {
+//     $id_type = intval(strip_tags($data['id_type']));
+//     $query = $dbCo->prepare("SELECT * FROM history WHERE id_type = :id_type");
+//     $isOk = $query->execute([
+//     'id_type' => $id_type
+// ]);
+//     echo json_encode([
+//         'result' => $isOk && $query->rowCount() > 0,
+//         'id_type' => $id_type
+//     ]);
+//     exit;
+// }

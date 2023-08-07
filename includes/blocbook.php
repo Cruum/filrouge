@@ -3,11 +3,11 @@
 <?php 
         echo '<section class="histories">';
         foreach($result as $history){
-   echo '<article class="history-contenaire">
+   echo '<article class="history-contenaire" value="'.$history['id_type'].'">
                 <div class="history contenaire contenaire-dimension">
                     <a class="history-lnk" href="#"><img class="history-img"
-                            src='.$history['image'].'
-                            alt="image fantastique d un grand arbre"></a>
+                            src="uploaded/'.$history['image'].'"
+                           ></a>
                     <a href="#">
                         <h2 class="history-tlt">'.$history['name_history'].'</h2>
                     </a>

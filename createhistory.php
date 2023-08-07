@@ -21,7 +21,7 @@ require 'includes/_config.php';
         $result = $query->fetchAll();
 
         ?>
-        <form class="form_group" action="actions.php" method="POST">
+        <form class="form_group" action="actions.php" method="POST" enctype="multipart/form-data">
 
             <?php
 
@@ -44,8 +44,8 @@ require 'includes/_config.php';
 
 
             <div class="form_item">
-                <label for="img">Choisisser une Image</label>
-                <input type="file" id="img" name="img" accept="image/png, image/jpeg">
+                <label for="upload">Choisisser une Image</label>
+                <input type="file" id="upload" name="img" accept="image/png, image/jpeg">
             </div>
 
             <div>
@@ -55,7 +55,6 @@ require 'includes/_config.php';
     </textarea>
             </div>
             <input type="hidden" name="token" value="' . $_SESSION['token'] . '">
-            <input type="hidden" name="submit" value="' . $task['Id_task'] . '">
             <button class="form_buton" type="submit" value="Sauvegarder!" name="submit"> Sauvegarder!</button>
         </form>
     </section>
