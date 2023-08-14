@@ -1,8 +1,19 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['user'])) {
+    header('Location: connexion.php');
+    die();
+}
+
+$userID = $_SESSION['id_gamer'];
+
 require 'includes/header.php';
 require 'includes/_database.php';
 require 'includes/_functions.php';
 require 'includes/_config.php';
+
+
 
 ?>
 
@@ -50,13 +61,14 @@ $result = $query->fetchAll();
             Description de l'histoire
         </textarea>
     </div>
-
+    <input type="hidden" name="id_gamer" value=<?=" '  $userID  '"?>>
+ 
     <input type="hidden" name="token" value="' . $_SESSION['token'] . '">
     <button class="form_button" type="submit" name="initialisation"> Sauvegarder!</button>
 </form>
 
     </section>
 
-    <script src="menuscript.js"></script>
+    <script src="js/menuscript.js"></script>
 
 </main>

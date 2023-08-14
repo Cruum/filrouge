@@ -140,7 +140,7 @@ $result = $query->fetchAll();
  
 </main>
 </body>
-<script src="createchoise.js"></script>
-<script src="menuscript.js"></script>
+<script src="js/createchoise.js"></script>
+<script src="js/menuscript.js"></script>
 
 </html>

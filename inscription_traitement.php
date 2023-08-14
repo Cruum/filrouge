@@ -27,8 +27,8 @@ if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['passwor
                     if($password === $password_retype){ // si les deux mdp saisis sont bon
 
                         // On hash le mot de passe avec Bcrypt, via un coût de 12
-                        $cost = ['cost' => 12];
-                        $password = password_hash($password, PASSWORD_BCRYPT, $cost);
+                        
+                        $password = password_hash($password, PASSWORD_DEFAULT);
                         
                         // On stock l'adresse IP
                         $ip = $_SERVER['REMOTE_ADDR']; 

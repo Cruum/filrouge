@@ -1,4 +1,15 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['user'])) {
+    header('Location: connexion.php');
+    die();
+}
+
+$userID = $_SESSION['id_gamer'];
+
+var_dump($userID);
+
 require 'includes/header.php';
 require 'includes/_database.php';
 
@@ -33,12 +44,17 @@ require 'includes/_database.php';
 
         <?php
 
-$query = $dbCo->prepare("SELECT id_history, describe_history, name_history, image FROM history");
-$query->execute();
+$query = $dbCo->prepare("SELECT history.id_history, history.describe_history, history.name_history, history.image 
+FROM history 
+JOIN game ON history.id_history = game.id_history 
+WHERE game.id_gamer = :userID AND history.id_history = game.id_history" );
+$query->execute(
+    [':userID' =>strip_tags($userID)]  
+  );
 $result = $query->fetchAll();
 
 // var_dump($result);
-
+// exit;
 ?>
 <main class="main-histoire">
 
@@ -50,6 +66,6 @@ require 'includes/blocmodification.php';
     </main>
 
 </body>
-<script src="menuscript.js"></script>
+<script src="js/menuscript.js"></script>
 
 </html>

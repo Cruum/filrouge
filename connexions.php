@@ -11,12 +11,14 @@
         $email = strtolower($email); // email transformé en minuscule
         
         // On regarde si l'utilisateur est inscrit dans la table utilisateurs
-        $check = $dbCo->prepare('SELECT pseudo, email, password, token FROM gamer WHERE email = ?');
+        $check = $dbCo->prepare('SELECT id_gamer, pseudo, email, password, token FROM gamer WHERE email = ?');
         $check->execute(array($email));
         $data = $check->fetch();
         $row = $check->rowCount();
-
         
+        // var_dump($password);
+        // var_dump($row);
+        // exit;
 
         // Si > à 0 alors l'utilisateur existe
         if($row > 0)
@@ -29,6 +31,7 @@
                 {
                     // On créer la session et on redirige sur landing.php
                     $_SESSION['user'] = $data['token'];
+                    $_SESSION['id_gamer'] = $data['id_gamer'];
                     header('Location: landing.php');
                     die();
                 }else{ header('Location: connexion.php?login_err=password'); die(); }

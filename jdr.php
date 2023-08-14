@@ -120,6 +120,6 @@ $JSONString = json_encode($JSONData);
 <?php
 echo '<script>const JSON = ' . $JSONString . ';</script>';
 ?>
-<script src="script.js"></script>
-<script src="menuscript.js"></script>
+<script src="js/script.js"></script>
+<script src="js/menuscript.js"></script>
 </html>

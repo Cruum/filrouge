@@ -13,7 +13,7 @@
            <title>Fil Rouge</title>
        </head>
        
-       <body class="PlayCreateJDR">
+       <body class="PlayCreateJDR bg-dark">
        
            <header>
                <nav class="nav-barre">

@@ -2,42 +2,6 @@
 require 'includes/_database.php';
 session_start();
 
-//only if we have email and password
-if(!empty($_POST['email']) && !empty($_POST['password'])) 
-{
-    // Patch XSS
-    $email = htmlspecialchars($_POST['email']); 
-    $password = htmlspecialchars($_POST['password']);
-    
-    $email = strtolower($email); // email transformé en minuscule
-    
-    // On regarde si l'utilisateur est inscrit dans la table utilisateurs
-    $check = $dbCo->prepare('SELECT pseudo, email, password, token FROM gamer WHERE email = ?');
-    $check->execute(array($email));
-    $data = $check->fetch();
-    $row = $check->rowCount();
-    
-    
-
-    // Si > à 0 alors l'utilisateur existe
-    if($row > 0)
-    {
-        // Si le mail est bon niveau format
-        if(filter_var($email, FILTER_VALIDATE_EMAIL))
-        {
-            // Si le mot de passe est le bon
-            if(password_verify($password, $data['password']))
-            {
-                // On créer la session et on redirige sur landing.php
-                $_SESSION['user'] = $data['token'];
-                header('Location: createjdr.php');
-                die();
-            }else{ header('Location: connexion.php?login_err=password'); die(); }
-        }else{ header('Location: connexion.php?login_err=email'); die(); }
-    }else{ header('Location: connexion.php?login_err=already'); die(); }
-}else{ header('Location: connexion.php'); die();} // si le formulaire est envoyé sans aucune données
-
-
 if (isset($_POST['initialisation'])) {
 
     $nameJDR = $_POST['nameJDR'];
@@ -63,13 +27,23 @@ if (isset($_POST['initialisation'])) {
         $target_dir = getcwd() . "/uploaded/";
 $target_path = $target_dir . $image['name'];
     $tmp_name = $image['tmp_name'];
-    // var_dump($tmp_name);
-
-    // var_dump($target_path);
-
     $move_success = move_uploaded_file($tmp_name, $target_path);
-    // var_dump($move_success);
-    // exit;
+
+
+
+    $newHistoryID = $dbCo->lastInsertId();
+    $currentDateTime = new DateTime();
+    $currentDateTimeString = $currentDateTime->format('Y-m-d H:i:s');
+    $id_gamer = $_POST['id_gamer'];
+    
+
+    $query = $dbCo->prepare("INSERT INTO game (id_gamer, date_hour_game, id_history) VALUES (:id_gamer, :date_hour_game, :id_history)");
+    $isOk = $query->execute([
+        ':id_gamer' => strip_tags($id_gamer),
+        ':date_hour_game' => $currentDateTimeString,
+        ':id_history' => strip_tags($newHistoryID),
+    ]);        
+
     header('Location:createhistory.php?msg=' . ($isOk ? 'Tous a été ajoutée' : 'Un problème a été rencontré lors de l\'ajout de la tâche'));
     exit;
 }else {

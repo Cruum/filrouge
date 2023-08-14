@@ -12,7 +12,6 @@
     src: local('Dhyana'), url('font-family/Dhyana-Bold.woff') format('woff');
 }
 
-
 :root {
     font-size: 24px;
     --black: #000000;
@@ -23,12 +22,12 @@
     :root {
         font-size: 24px;
     }
-
+    
     .main {
         width: 60%;
         margin: 0 auto;
     }
-
+    
     .main-histoire {
         width: 60vw;
         margin: 0 auto;
@@ -64,12 +63,15 @@ h6 {
 
 /* body */
 body {
-    background-color: var(--black);
+    background-color: var(--black) !important ;
     font-family: 'Dhyana';
     color: var(--smoky-black);
     font-size: .75rem;
 }
 
+.bg-dark{
+    background-color: var(--black) !important ;
+}
 /* utilities */
 .contenaire {
     width: 90%;

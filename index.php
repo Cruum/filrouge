@@ -68,6 +68,6 @@ require 'includes/_database.php';
         </ul> -->
     </footer>
 </body>
-<script type="text/javascript"  src="affichage.js" async></script>
-<script src="menuscript.js"></script>
+<script type="text/javascript"  src="js/affichage.js" async></script>
+<script src="js/menuscript.js"></script>
 </html>
